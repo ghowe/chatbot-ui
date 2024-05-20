@@ -2,7 +2,10 @@
 
 import { Dashboard } from "@/components/ui/dashboard"
 import { ChatbotUIContext } from "@/context/context"
-import { getAssistantWorkspacesByWorkspaceId } from "@/db/assistants"
+import {
+  getAssistantWorkspacesByWorkspaceId,
+  getAssistantsByBillingPlan
+} from "@/db/assistants"
 import { getChatsByWorkspaceId } from "@/db/chats"
 import { getCollectionWorkspacesByWorkspaceId } from "@/db/collections"
 import { getFileWorkspacesByWorkspaceId } from "@/db/files"
@@ -94,7 +97,16 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     setSelectedWorkspace(workspace)
 
     const assistantData = await getAssistantWorkspacesByWorkspaceId(workspaceId)
-    setAssistants(assistantData.assistants)
+
+    // Get workpace by Billing Plan if any
+    var billing_plan = "MyLifeCareAI" //workspace?.billing_plan || "";
+    if (billing_plan !== "") {
+      const bpAssistants = await getAssistantsByBillingPlan(billing_plan)
+      const mergedAssistants = [...assistantData.assistants, ...bpAssistants]
+      setAssistants(mergedAssistants)
+    } else {
+      setAssistants(assistantData.assistants)
+    }
 
     for (const assistant of assistantData.assistants) {
       let url = ""
