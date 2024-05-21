@@ -50,19 +50,6 @@ export const getAssistantsByBillingPlan = async (billing_plan: string) => {
   return assistants
 }
 
-export const getAssistantsNonPrivate = async () => {
-  const { data: assistants, error } = await supabase
-    .from("assistants")
-    .select("*")
-  //.eq !("sharing", "private") // non-private assistants
-
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  return assistants
-}
-
 export const getAssistantWorkspacesByAssistantId = async (
   assistantId: string
 ) => {
