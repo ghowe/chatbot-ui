@@ -16,22 +16,17 @@ import { useChatHistoryHandler } from "./chat-hooks/use-chat-history";
 import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command";
 import { useSelectFileHandler } from "./chat-hooks/use-select-file-handler";
 import { Mic, Mic2, MicroscopeIcon, Volume2 } from "lucide-react";
-
-// TODO fix env API Key
 import dotenv from 'dotenv';
+
 dotenv.config({path: process.cwd() + '.env.local'});
 
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
-
-
 
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
 
 //const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
 //const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
-//const AZURE_SPEECH_TO_TEXT_API_KEY="b696f0166a6d4f8cbf4a4cbe6a1998df";
-//const AZURE_SPEECH_TO_TEXT_REGION="westus2";
 
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
@@ -132,8 +127,8 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
     
     recognizer.recognizing = (s, e) => {
       if (!isAppending) {
-        toast.message(`RECOGNIZING: ${e.result.text}`);
-        console.log(`RECOGNIZING: ${e.result.text}`);
+        //toast.message(`RECOGNIZING: ${e.result.text}`);
+        //console.log(`RECOGNIZING: ${e.result.text}`);
         // setTranscript(prevTranscript => prevTranscript + e.result.text); // Append transcribed text to existing transcript
         isAppending = true; // Set flag to true to indicate transcript is being appended
       }
@@ -159,8 +154,8 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
     };
   
     recognizer.sessionStopped = (s, e) => {
-      toast.message("\n    Session stopped event.");
-      console.log("\n    Session stopped event.");
+      //toast.message("\n    Session stopped event.");
+      //console.log("\n    Session stopped event.");
       recognizer.stopContinuousRecognitionAsync();
     };
   
@@ -169,8 +164,8 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
   
     // Event handler for end of speech detection
     recognizer.sessionStopped = (s, e) => {
-      toast.message("\n    End of speech detected.");
-      console.log("\n    End of speech detected.");
+      //toast.message("\n    End of speech detected.");
+      //console.log("\n    End of speech detected.");
       stopSpeechRecognition();
     };
   }
@@ -178,7 +173,6 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
   function stopSpeechRecognition() {
     recognizer.stopContinuousRecognitionAsync();
   }  
-  
   
   return (
     <>
