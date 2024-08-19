@@ -18,8 +18,8 @@ import { useSelectFileHandler } from "./chat-hooks/use-select-file-handler";
 import { Mic, Mic2, MicroscopeIcon, Volume2 } from "lucide-react";
 
 // TODO fix env API Key
-//import dotenv from 'dotenv';
-//dotenv.config({path: process.cwd() + '.env.local'});
+import dotenv from 'dotenv';
+dotenv.config({path: process.cwd() + '.env.local'});
 
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
