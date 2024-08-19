@@ -30,17 +30,14 @@ import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitive
 
 //const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
 //const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
-const AZURE_SPEECH_TO_TEXT_API_KEY="b696f0166a6d4f8cbf4a4cbe6a1998df"
-const AZURE_SPEECH_TO_TEXT_REGION="westus2"
+//const AZURE_SPEECH_TO_TEXT_API_KEY="b696f0166a6d4f8cbf4a4cbe6a1998df";
+//const AZURE_SPEECH_TO_TEXT_REGION="westus2";
 
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 // IMPORTING SPEECH TO TEXT SDKs
-
-
-
 import axios from 'axios';
 import https from 'https';
 
