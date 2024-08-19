@@ -17,8 +17,9 @@ import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command";
 import { useSelectFileHandler } from "./chat-hooks/use-select-file-handler";
 import { Mic, Mic2, MicroscopeIcon, Volume2 } from "lucide-react";
 
-import dotenv from 'dotenv';
-dotenv.config({path: process.cwd() + '.env.local'});
+// TODO fix env API Key
+//import dotenv from 'dotenv';
+//dotenv.config({path: process.cwd() + '.env.local'});
 
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
@@ -27,10 +28,10 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
 
-//const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
-//const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
-const AZURE_SPEECH_TO_TEXT_API_KEY="dfe6fa7633244821b939e49277b86865"
-const AZURE_SPEECH_TO_TEXT_REGION="eastus"
+const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
+const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
+//const AZURE_SPEECH_TO_TEXT_API_KEY="dfe6fa7633244821b939e49277b86865"
+//const AZURE_SPEECH_TO_TEXT_REGION="eastus"
 
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
