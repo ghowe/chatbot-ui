@@ -25,8 +25,9 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
 
-const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
-const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
+//const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
+//const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
+
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
