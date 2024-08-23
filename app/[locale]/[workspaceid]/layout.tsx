@@ -19,7 +19,7 @@ import { getWorkspaceById } from "@/db/workspaces"
 import { convertBlobToBase64 } from "@/lib/blob-to-b64"
 import { supabase } from "@/lib/supabase/browser-client"
 import { LLMID } from "@/types"
-import { useParams, useRouter, useSearchParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { ReactNode, useContext, useEffect, useState } from "react"
 import Loading from "../loading"
 
@@ -31,7 +31,6 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const router = useRouter()
 
   const params = useParams()
-  const searchParams = useSearchParams()
   const workspaceId = params.workspaceid as string
 
   const {
@@ -100,7 +99,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     const assistantData = await getAssistantWorkspacesByWorkspaceId(workspaceId)
 
     // Get workpace by Billing Plan if any
-    var billing_plan = "MyLifeCareAI"
+    var billing_plan = workspace?.billing_plan || "MyLifeCareAI"
     if (billing_plan !== "") {
       const bpAssistants = await getAssistantsByBillingPlan(billing_plan)
       const mergedAssistants = [...assistantData.assistants, ...bpAssistants]
@@ -169,9 +168,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     setModels(modelData.models)
 
     setChatSettings({
-      model: (searchParams.get("model") ||
-        workspace?.default_model ||
-        "gpt-4-1106-preview") as LLMID,
+      model: (workspace?.default_model || "gpt-4-1106-preview") as LLMID,
       prompt:
         workspace?.default_prompt ||
         "You are a friendly, helpful AI assistant.",
