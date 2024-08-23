@@ -7,8 +7,8 @@ import Image from "next/image";
 import { FC, useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { Input } from "../ui/input";
 import { TextareaAutosize } from "../ui/textarea-autosize";
+import { Input } from "../ui/input";
 import { ChatCommandInput } from "./chat-command-input";
 import { ChatFilesDisplay } from "./chat-files-display";
 import { useChatHandler } from "./chat-hooks/use-chat-handler";
@@ -25,8 +25,8 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
 
-//const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
-//const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
+const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
+const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
 
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
