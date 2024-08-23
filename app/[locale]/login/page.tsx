@@ -93,6 +93,8 @@ export default async function Login({
   const signUp = async (formData: FormData) => {
     "use server"
 
+    //Added for SignUP Error Debugging
+    const origin = headers().get("origin")
     const email = formData.get("email") as string
     const password = formData.get("password") as string
 
