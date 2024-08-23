@@ -6,8 +6,8 @@ import { IconBolt, IconCirclePlus, IconPlayerStopFilled, IconSend } from "@table
 import Image from "next/image";
 import { FC, useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Input } from "../ui/input";
 import { toast } from "sonner";
+import { Input } from "../ui/input";
 import { TextareaAutosize } from "../ui/textarea-autosize";
 import { ChatCommandInput } from "./chat-command-input";
 import { ChatFilesDisplay } from "./chat-files-display";
