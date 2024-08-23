@@ -93,8 +93,6 @@ export default async function Login({
   const signUp = async (formData: FormData) => {
     "use server"
 
-    //Added for SignUP Error Debugging
-    const origin = headers().get("origin")
     const email = formData.get("email") as string
     const password = formData.get("password") as string
 
@@ -116,9 +114,7 @@ export default async function Login({
       const emailMatch = emailWhitelist?.includes(email)
       if (!domainMatch && !emailMatch) {
         return redirect(
-          //TODO Build waitlist
-          // `/login?message=Email ${email} is not allowed to sign up.`
-          `/login?message=Welcome to our community! We're thrilled to see such enthusiastic interest, but currently, new registrations are prioritized for our Enterprise providers and carriers. Good news though your email, ${email}, is now on our waitlist! Rest assured, we'll reach out to you just as soon as we expand our capacity. You can see a video demo on our YouTube Channel "MyLifecar AI".`
+          `/login?message=Email ${email} is not allowed to sign up.`
         )
       }
     }
@@ -131,7 +127,7 @@ export default async function Login({
       password,
       options: {
         // USE IF YOU WANT TO SEND EMAIL VERIFICATION, ALSO CHANGE TOML FILE
-        emailRedirectTo: `${origin}/auth/callback`
+        // emailRedirectTo: `${origin}/auth/callback`
       }
     })
 
@@ -143,7 +139,7 @@ export default async function Login({
     return redirect("/setup")
 
     // USE IF YOU WANT TO SEND EMAIL VERIFICATION, ALSO CHANGE TOML FILE
-    return redirect("/login?message=Check email to continue sign in process")
+    // return redirect("/login?message=Check email to continue sign in process")
   }
 
   const handleResetPassword = async (formData: FormData) => {
