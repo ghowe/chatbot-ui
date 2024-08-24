@@ -21,7 +21,8 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
-require('dotenv').config({ path: path.resolve(process.cwd(),'.vercel/env.production.local') });
+
+//require('dotenv').config({ path: path.resolve(process.cwd(),'.vercel/env.production.local') });
 
 const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
 const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
