@@ -17,18 +17,16 @@ import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command";
 import { useSelectFileHandler } from "./chat-hooks/use-select-file-handler";
 import { Mic, Mic2, MicroscopeIcon, Volume2 } from "lucide-react";
 import dotenv from 'dotenv';
-
-dotenv.config({path: process.cwd() + '.env.local'});
-
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
 // IMPORTING SPEECH TO TEXT SDKs
 import { SpeechRecognizer, SpeechConfig, AudioConfig } from "microsoft-cognitiveservices-speech-sdk";
+require('dotenv').config({ path: path.resolve(process.cwd(),'.vercel/env.production.local') });
 
-//const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
-//const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
-const AZURE_SPEECH_TO_TEXT_API_KEY = "866d43a2c8d944388819fd0786bd9294";
-const AZURE_SPEECH_TO_TEXT_REGION = "westus2";
+const AZURE_SPEECH_TO_TEXT_API_KEY = process.env.AZURE_SPEECH_TO_TEXT_API_KEY || '';
+const AZURE_SPEECH_TO_TEXT_REGION = process.env.AZURE_SPEECH_TO_TEXT_REGION || '';
+//const AZURE_SPEECH_TO_TEXT_API_KEY = "866d43a2c8d944388819fd0786bd9294";
+//const AZURE_SPEECH_TO_TEXT_REGION = "westus2";
 
 const speechConfig = SpeechConfig.fromSubscription(AZURE_SPEECH_TO_TEXT_API_KEY, AZURE_SPEECH_TO_TEXT_REGION);
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
