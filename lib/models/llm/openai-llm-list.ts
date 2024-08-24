@@ -17,7 +17,7 @@ const GPT4o: LLM = {
     outputCost: 15
   }
 }
-const GPT4o: LLM = {
+const GPT4oMini: LLM = {
   modelId: "gpt-4o-mini",
   modelName: "GPT-4o-mini",
   provider: "openai",
