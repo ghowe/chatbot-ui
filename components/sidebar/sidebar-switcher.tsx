@@ -32,7 +32,7 @@ export const SidebarSwitcher: FC<SidebarSwitcherProps> = ({
           contentType="chats"
           onContentTypeChange={onContentTypeChange}
         />
-    {/* TODO Based on Security profile enable for admins only for comment out side bar for demo /> 
+        {/* TODO Based on Security profile enable for admins only for comment out side bar for demo /> 
         <SidebarSwitchItem
           icon={<IconAdjustmentsHorizontal size={SIDEBAR_ICON_SIZE} />}
           contentType="presets"

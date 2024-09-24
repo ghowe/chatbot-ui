@@ -185,41 +185,44 @@ export const Message: FC<MessageProps> = ({
 
   // Function to fetch TTS audio from Elevanlabs API
   const fetchTTS = async (text: string) => {
-    const API_KEY = process.env.NEXT_PUBLIC_TEXT_TO_SPEECH_ELEVENLABS_API || '';
-    const VOICE_ID = process.env.NEXT_PUBLIC_TEXT_TO_SPEECH_ELEVENLABS_VOICE_ID || '';
-    
+    const API_KEY = process.env.NEXT_PUBLIC_TEXT_TO_SPEECH_ELEVENLABS_API || ""
+    const VOICE_ID =
+      process.env.NEXT_PUBLIC_TEXT_TO_SPEECH_ELEVENLABS_VOICE_ID || ""
+
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'xi-api-key': API_KEY,
-        'Content-Type': 'application/json'
+        "xi-api-key": API_KEY,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ text })
-    };
-
-    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, options);
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch TTS audio');
     }
 
-    const audioBlob = await response.blob();
-    return URL.createObjectURL(audioBlob);
+    const response = await fetch(
+      `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`,
+      options
+    )
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch TTS audio")
+    }
+
+    const audioBlob = await response.blob()
+    return URL.createObjectURL(audioBlob)
   }
 
   const handleSpeak = async () => {
     try {
-      const audioURL = await fetchTTS(message.content);
-      const audio = new Audio(audioURL);
-      audio.play();
+      const audioURL = await fetchTTS(message.content)
+      const audio = new Audio(audioURL)
+      audio.play()
 
       //toast.info('Playing...');
-      
     } catch (error) {
-      toast.error("Text-to-Speech API Error: " + error);
-      console.error('Error fetching TTS audio:', error);
+      toast.error("Text-to-Speech API Error: " + error)
+      console.error("Error fetching TTS audio:", error)
     }
-  };
+  }
 
   return (
     <div
@@ -246,7 +249,6 @@ export const Message: FC<MessageProps> = ({
           />
 
           {/* <Volume2Icon onClick={handleSpeak} style={{cursor: "pointer"}}></Volume2Icon> */}
-          
         </div>
 
         <div className="space-y-3">
@@ -393,14 +395,18 @@ export const Message: FC<MessageProps> = ({
                         .filter(fileItem => {
                           const parentFile = files.find(
                             parentFile => parentFile.id === fileItem.file_id
-                          );
-                          return parentFile?.id === file.id;
+                          )
+                          return parentFile?.id === file.id
                         })
                         .map((fileItem, index) => (
-                          <div key={index} className="flex items-center space-x-2">
+                          <div
+                            key={index}
+                            className="flex items-center space-x-2"
+                          >
                             <div className="w-5" />
-                            <div className="text-sm truncate">
-                              {fileItem.content || "Untitled"} {/* Use another property or a default value */}
+                            <div className="truncate text-sm">
+                              {fileItem.content || "Untitled"}{" "}
+                              {/* Use another property or a default value */}
                             </div>
                           </div>
                         ))}
@@ -413,18 +419,18 @@ export const Message: FC<MessageProps> = ({
         )}
 
         {chatImages?.length > 0 && (
-          <div className="grid grid-cols-3 gap-4 mt-6">
+          <div className="mt-6 grid grid-cols-3 gap-4">
             {chatImages.map((image, index) => (
               <div
                 key={index}
-                className="relative cursor-pointer w-full aspect-w-1 aspect-h-1 overflow-hidden bg-primary"
+                className="aspect-w-1 aspect-h-1 bg-primary relative w-full cursor-pointer overflow-hidden"
                 onClick={() => {
                   setSelectedImage(image)
                   setShowImagePreview(true)
                 }}
               >
                 <Image
-                  className="object-cover w-full h-full"
+                  className="size-full object-cover"
                   src={image.url}
                   alt={`image-${index}`}
                   layout="fill"
@@ -434,29 +440,29 @@ export const Message: FC<MessageProps> = ({
           </div>
         )}
 
-      {showImagePreview && selectedImage && (
-        <FilePreview
-          type="image"
-          item={selectedImage}
-          isOpen={showImagePreview}
-          onOpenChange={(isOpen: boolean) => {
-            setShowImagePreview(isOpen)
-            setSelectedImage(null)
-          }}
-        />
-      )}
+        {showImagePreview && selectedImage && (
+          <FilePreview
+            type="image"
+            item={selectedImage}
+            isOpen={showImagePreview}
+            onOpenChange={(isOpen: boolean) => {
+              setShowImagePreview(isOpen)
+              setSelectedImage(null)
+            }}
+          />
+        )}
 
-      {showFileItemPreview && selectedFileItem && (
-        <FilePreview
-          type="file_item"
-          item={selectedFileItem}
-          isOpen={showFileItemPreview}
-          onOpenChange={(isOpen: boolean) => {
-            setShowFileItemPreview(isOpen)
-            setSelectedFileItem(null)
-          }}
-        />
-      )}
+        {showFileItemPreview && selectedFileItem && (
+          <FilePreview
+            type="file_item"
+            item={selectedFileItem}
+            isOpen={showFileItemPreview}
+            onOpenChange={(isOpen: boolean) => {
+              setShowFileItemPreview(isOpen)
+              setSelectedFileItem(null)
+            }}
+          />
+        )}
       </div>
     </div>
   )

@@ -49,7 +49,6 @@ export const ChatSettingsForm: FC<ChatSettingsFormProps> = ({
           }}
         />
       </div>
-
     </div>
   )
 }

@@ -109,7 +109,6 @@ export const MessageActions: FC<MessageActionsProps> = ({
         />
       )}
 
-
       {(isHovering || isLast) && (
         <WithTooltip
           delayDuration={1000}
