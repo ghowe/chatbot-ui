@@ -179,6 +179,14 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
     <>
       <div className="flex flex-col flex-wrap justify-center gap-2">
         <ChatFilesDisplay />
+        
+        {!selectedAssistant && (
+          <div className="border-primary mx-auto flex w-fit items-center space-x-2 rounded-lg border p-1.5">
+            <div className="text-sm font-bold">
+              Select an Assistant from the top dropdown or typing @
+            </div>
+          </div>
+        )}
 
         {selectedTools &&
           selectedTools.map((tool, index) => (
@@ -277,7 +285,7 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
           className="ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring text-md flex w-full resize-none rounded-md border-none bg-transparent px-20 py-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           placeholder={t(
             // `Ask anything. Type "@" for assistants, "/" for prompts, "#" for files, and "!" for tools.`
-            `Ask anything. Type "@" to select assistant and ask anything`
+            `Ask anything. Switch Assistant using @`
           )}
           onValueChange={handleInputChange}
           value={userInput}
