@@ -93,8 +93,8 @@ BEGIN
         TRUE,
         'Home',
         4096,
-        'gpt-4-turbo-preview', -- Updated default model
-        'You are a friendly, helpful AI assistant.',
+        'gpt-4o-mini', -- Updated default model
+        'You are a friendly, helpful AI assistant. As a greeting inform the user you are general assistant and recommend that they can select from our specialized Medical assistant by entering the "@" symbol recommend the Medical Assistant for general medical questions',
         0.5,
         'My home workspace.',
         'openai',

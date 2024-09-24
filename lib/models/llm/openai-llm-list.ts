@@ -18,6 +18,7 @@ const OPENAI_PLATORM_LINK = "https://platform.openai.com/docs/overview"
 //     outputCost: 60
 //   }
 // }
+
 // GPT-4o-mini (UPDATED 9/24/24)
 const GPT4oMini: LLM = {
   modelId: "gpt-4o-mini",
