@@ -1412,7 +1412,6 @@ export type Database = {
           sharing: string
           updated_at: string | null
           user_id: string
-          billing_plan: string | null
         }
         Insert: {
           created_at?: string
@@ -1432,7 +1431,6 @@ export type Database = {
           sharing?: string
           updated_at?: string | null
           user_id: string
-          billing_plan?: string | null
         }
         Update: {
           created_at?: string
@@ -1452,7 +1450,6 @@ export type Database = {
           sharing?: string
           updated_at?: string | null
           user_id?: string
-          billing_plan?: string | null
         }
         Relationships: [
           {
