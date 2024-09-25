@@ -48,6 +48,7 @@ export const getAssistantImageFromStorage = async (filePath: string) => {
     if (error) {
       throw new Error("Error downloading assistant image")
     }
+    console.log(data.signedUrl)
 
     return data.signedUrl
   } catch (error) {
