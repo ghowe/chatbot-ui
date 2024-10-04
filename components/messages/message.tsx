@@ -147,12 +147,13 @@ export const Message: FC<MessageProps> = ({
   const messageAssistantImage = assistantImages.find(
     image => image.assistantId === message.assistant_id
   )?.base64
-  console.log("messageAssistantID: ", message.assistant_id)
-  console.log("messageAssistantImage: ", messageAssistantImage)
 
   const selectedAssistantImage = assistantImages.find(
     image => image.path === selectedAssistant?.image_path
   )?.base64
+  console.log("messageAssistantID: ", message.assistant_id)
+  console.log("messageAssistantImage: ", messageAssistantImage)
+  console.log("selectedAssistant_image_path: ", selectedAssistant?.image_path)
 
   const modelDetails = LLM_LIST.find(model => model.modelId === message.model)
 

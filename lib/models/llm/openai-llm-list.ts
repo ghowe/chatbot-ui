@@ -3,7 +3,7 @@ import { LLM } from "@/types"
 const OPENAI_PLATORM_LINK = "https://platform.openai.com/docs/overview"
 
 // OpenAI Models (UPDATED 1/25/24) -----------------------------
-// GPT-4o-mini (UPDATED 9/24/24)
+// o1-preview (UPDATED 9/24/24)
 // const o1: LLM = {
 //   modelId: "o1",
 //   modelName: "Enterprise",
@@ -54,7 +54,7 @@ const GPT4o: LLM = {
 // GPT-4 Turbo (UPDATED 1/25/24)
 const GPT4Turbo: LLM = {
   modelId: "gpt-4-turbo-preview",
-  modelName: "Turbo",
+  modelName: "Standard",
   provider: "openai",
   hostedId: "gpt-4-turbo-preview",
   platformLink: OPENAI_PLATORM_LINK,
@@ -85,7 +85,7 @@ const GPT4Vision: LLM = {
 // GPT-4 (UPDATED 1/29/24)
 const GPT4: LLM = {
   modelId: "gpt-4",
-  modelName: "Standard",
+  modelName: "Demo",
   provider: "openai",
   hostedId: "gpt-4",
   platformLink: OPENAI_PLATORM_LINK,
