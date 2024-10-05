@@ -183,7 +183,7 @@ export default function SetupPage() {
       case 2:
         return (
           <StepContainer
-            stepDescription="Enter API keys for each service you'd like to use."
+            stepDescription="MyLifeCare.ai uses specialized models, but you can optionally use alternative models. Enter API keys for each service you'd like to use or select Next."
             stepNum={currentStep}
             stepTitle="Set API Keys (optional)"
             onShouldProceed={handleShouldProceed}
