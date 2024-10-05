@@ -200,6 +200,21 @@ export default async function Login({
           Sign Up
         </SubmitButton>
 
+        {searchParams?.message && (
+          <p className="bg-foreground/10 text-foreground mt-4 p-4 text-center">
+            {searchParams.message}
+          </p>
+        )}
+
+        {searchParams?.message?.includes(
+          "Check email to continue sign in process"
+        ) && (
+          <div className="bg-foreground/10 text-foreground mt-4 p-4 text-center">
+            Please check your email and click the verification link to complete
+            the sign-up process.
+          </div>
+        )}
+
         <div className="text-muted-foreground mt-1 flex justify-center text-sm">
           <span className="mr-1">Forgot your password?</span>
           <button
